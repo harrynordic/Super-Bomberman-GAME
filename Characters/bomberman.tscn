@@ -1,0 +1,156 @@
+[gd_scene load_steps=12 format=3 uid="uid://edws24jk1w6h"]
+
+[ext_resource type="Script" path="res://Characters/bomberman.gd" id="1_e1laj"]
+[ext_resource type="Texture2D" uid="uid://bt3csy4kfr4su" path="res://Assets/Superbomberman.png" id="1_hjfpt"]
+
+[sub_resource type="Animation" id="Animation_ochto"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="Animation" id="Animation_jhana"]
+resource_name = "idle_bottom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="Animation" id="Animation_5jnyq"]
+resource_name = "idle_top"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_c8fq8"]
+resource_name = "walk_bottom"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 18, 20]
+}
+
+[sub_resource type="Animation" id="Animation_g4q7q"]
+resource_name = "walk_left"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [27, 28, 27, 29]
+}
+
+[sub_resource type="Animation" id="Animation_qo6oh"]
+resource_name = "walk_right"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 9, 11]
+}
+
+[sub_resource type="Animation" id="Animation_p4uqa"]
+resource_name = "walk_top"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yale4"]
+_data = {
+"RESET": SubResource("Animation_ochto"),
+"idle_bottom": SubResource("Animation_jhana"),
+"idle_top": SubResource("Animation_5jnyq"),
+"walk_bottom": SubResource("Animation_c8fq8"),
+"walk_left": SubResource("Animation_g4q7q"),
+"walk_right": SubResource("Animation_qo6oh"),
+"walk_top": SubResource("Animation_p4uqa")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66l71"]
+size = Vector2(11.9946, 14.9998)
+
+[node name="Bomberman" type="CharacterBody2D"]
+z_index = 1
+position = Vector2(0, -11)
+collision_mask = 2
+script = ExtResource("1_e1laj")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_hjfpt")
+hframes = 9
+vframes = 20
+frame = 18
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yale4")
+}
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0.484226, 7.00008)
+rotation = -1.57605
+shape = SubResource("RectangleShape2D_66l71")
+
+[node name="bomb_marker" type="Marker2D" parent="."]
+position = Vector2(0, 7)

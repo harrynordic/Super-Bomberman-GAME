@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnd5hlw34m72w"]
+
+[ext_resource type="Texture2D" uid="uid://c4l2ji8o035sm" path="res://Assets/SNES - Super Bomberman 4 JPN - Bombs & Explosions.png" id="1_8ejeo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uogdv"]
+atlas = ExtResource("1_8ejeo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fv80"]
+atlas = ExtResource("1_8ejeo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1kqj"]
+atlas = ExtResource("1_8ejeo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh8a2"]
+atlas = ExtResource("1_8ejeo")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_43mck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uogdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fv80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1kqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh8a2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="bomb" type="CharacterBody2D"]
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_43mck")
+autoplay = "default"
+frame_progress = 0.612727
